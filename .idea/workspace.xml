@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5437974-f8ca-4b68-b880-676c51542d6a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_11050.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_11866.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_1259.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_2609.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_1018.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_10845.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_10866.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_11650.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_2164.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_4153.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +55,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.sourceCode.JavaScript",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -66,9 +67,9 @@
       <recent name="baekjoon" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Sol_11866">
-    <configuration name="Sol_10951" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_10951" />
+  <component name="RunManager" selected="Application.Sol_11650">
+    <configuration name="Sol_1018" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_1018" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -80,8 +81,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_11050" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_11050" />
+    <configuration name="Sol_10845" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_10845" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -93,8 +94,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_11866" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_11866" />
+    <configuration name="Sol_11650" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_11650" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -106,8 +107,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_1259" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_1259" />
+    <configuration name="Sol_2164" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_2164" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -119,8 +120,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_2609" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_2609" />
+    <configuration name="Sol_4153" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_4153" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -155,11 +156,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Sol_11866" />
-        <item itemvalue="Application.Sol_1259" />
-        <item itemvalue="Application.Sol_2609" />
-        <item itemvalue="Application.Sol_11050" />
-        <item itemvalue="Application.Sol_10951" />
+        <item itemvalue="Application.Sol_11650" />
+        <item itemvalue="Application.Sol_1018" />
+        <item itemvalue="Application.Sol_10845" />
+        <item itemvalue="Application.Sol_4153" />
+        <item itemvalue="Application.Sol_2164" />
       </list>
     </recent_temporary>
   </component>
@@ -173,6 +174,7 @@
       <updated>1678674506394</updated>
       <workItem from="1678674507491" duration="23254000" />
       <workItem from="1678782330457" duration="9512000" />
+      <workItem from="1678845948714" duration="17547000" />
     </task>
     <servers />
   </component>
