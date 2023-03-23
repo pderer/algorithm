@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5437974-f8ca-4b68-b880-676c51542d6a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_1978.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_2798.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_9012.java" afterDir="false" />
+    <list default="true" id="e5437974-f8ca-4b68-b880-676c51542d6a" name="Changes" comment="Class 2 풀이">
+      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_10250.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +31,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2MwN68upEB6LBkb34J4q6i3gWo6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -64,9 +65,9 @@
       <recent name="baekjoon" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Sol_9012">
-    <configuration name="Sol_1018" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_1018" />
+  <component name="RunManager" selected="Application.Sol_10250">
+    <configuration name="Sol_10250" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_10250" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -78,8 +79,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_11650" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_11650" />
+    <configuration name="Sol_10814" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_10814" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -91,8 +92,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_1978" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_1978" />
+    <configuration name="Sol_10816" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_10816" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -104,8 +105,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_2798" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_2798" />
+    <configuration name="Sol_10828" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_10828" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -117,8 +118,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_9012" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_9012" />
+    <configuration name="Sol_1181" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_1181" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -153,11 +154,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Sol_9012" />
-        <item itemvalue="Application.Sol_1978" />
-        <item itemvalue="Application.Sol_2798" />
-        <item itemvalue="Application.Sol_11650" />
-        <item itemvalue="Application.Sol_1018" />
+        <item itemvalue="Application.Sol_10250" />
+        <item itemvalue="Application.Sol_10816" />
+        <item itemvalue="Application.Sol_10828" />
+        <item itemvalue="Application.Sol_1181" />
+        <item itemvalue="Application.Sol_10814" />
       </list>
     </recent_temporary>
   </component>
@@ -172,11 +173,38 @@
       <workItem from="1678674507491" duration="23254000" />
       <workItem from="1678782330457" duration="9512000" />
       <workItem from="1678845948714" duration="22292000" />
-      <workItem from="1679064285820" duration="3186000" />
+      <workItem from="1679064285820" duration="4580000" />
+      <workItem from="1679304964131" duration="15042000" />
     </task>
+    <task id="LOCAL-00001" summary="Class 2 풀이">
+      <created>1679414393490</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679414393490</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Class 2 풀이">
+      <created>1679416929922</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679416929922</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Class 2 풀이">
+      <created>1679554570711</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1679554570711</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Class 2 풀이" />
+    <option name="LAST_COMMIT_MESSAGE" value="Class 2 풀이" />
   </component>
 </project>
