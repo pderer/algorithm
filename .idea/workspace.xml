@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5437974-f8ca-4b68-b880-676c51542d6a" name="Changes" comment="Class 2 풀이">
-      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_2751.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_1920.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +65,7 @@
       <recent name="baekjoon" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Sol_1920">
     <configuration name="Sol_10250" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_10250" />
       <module name="algorithm.main" />
@@ -105,8 +105,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_1181" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_1181" />
+    <configuration name="Sol_1920" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_1920" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -154,11 +154,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Sol_1920" />
         <item itemvalue="Application.Sol_2751" />
         <item itemvalue="Application.Sol_10250" />
         <item itemvalue="Application.Sol_10816" />
         <item itemvalue="Application.Sol_10828" />
-        <item itemvalue="Application.Sol_1181" />
       </list>
     </recent_temporary>
   </component>
@@ -174,7 +174,7 @@
       <workItem from="1678782330457" duration="9512000" />
       <workItem from="1678845948714" duration="22292000" />
       <workItem from="1679064285820" duration="4580000" />
-      <workItem from="1679304964131" duration="18420000" />
+      <workItem from="1679304964131" duration="19424000" />
     </task>
     <task id="LOCAL-00001" summary="Class 2 풀이">
       <created>1679414393490</created>
@@ -204,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679558022252</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Class 2 풀이">
+      <created>1679566516563</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679566516563</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
