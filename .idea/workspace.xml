@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5437974-f8ca-4b68-b880-676c51542d6a" name="Changes" comment="Class 2 풀이">
-      <change afterPath="$PROJECT_DIR$/src/main/java/baekjoon/Sol_11723.java" afterDir="false" />
+    <list default="true" id="e5437974-f8ca-4b68-b880-676c51542d6a" name="Changes" comment="Class 3 풀이, Dynamic Programming">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +16,31 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="algorithm" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="algorithm" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -46,10 +70,10 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/pderer/UniStudy/ProblemSolving/algorithm&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -66,9 +90,9 @@
       <recent name="baekjoon" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Sol_11723">
-    <configuration name="Sol_10250" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_10250" />
+  <component name="RunManager" selected="Application.Sol_11726">
+    <configuration name="Sol_1003" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_1003" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -80,8 +104,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_10816" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_10816" />
+    <configuration name="Sol_11726" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_11726" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -93,8 +117,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_11723" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_11723" />
+    <configuration name="Sol_1463" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_1463" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -106,8 +130,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_1920" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_1920" />
+    <configuration name="Sol_2606" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_2606" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -119,8 +143,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sol_2751" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_2751" />
+    <configuration name="Sol_9095" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="baekjoon.Sol_9095" />
       <module name="algorithm.main" />
       <extension name="coverage">
         <pattern>
@@ -155,11 +179,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Sol_11723" />
-        <item itemvalue="Application.Sol_1920" />
-        <item itemvalue="Application.Sol_2751" />
-        <item itemvalue="Application.Sol_10250" />
-        <item itemvalue="Application.Sol_10816" />
+        <item itemvalue="Application.Sol_11726" />
+        <item itemvalue="Application.Sol_9095" />
+        <item itemvalue="Application.Sol_2606" />
+        <item itemvalue="Application.Sol_1463" />
+        <item itemvalue="Application.Sol_1003" />
       </list>
     </recent_temporary>
   </component>
@@ -175,7 +199,10 @@
       <workItem from="1678782330457" duration="9512000" />
       <workItem from="1678845948714" duration="22292000" />
       <workItem from="1679064285820" duration="4580000" />
-      <workItem from="1679304964131" duration="25636000" />
+      <workItem from="1679304964131" duration="51797000" />
+      <workItem from="1680415670717" duration="7086000" />
+      <workItem from="1680514293664" duration="9981000" />
+      <workItem from="1681375333775" duration="1992000" />
     </task>
     <task id="LOCAL-00001" summary="Class 2 풀이">
       <created>1679414393490</created>
@@ -219,14 +246,84 @@
       <option name="project" value="LOCAL" />
       <updated>1679567667566</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Class 3 풀이">
+      <created>1679643823646</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679643823646</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Class 3 풀이">
+      <created>1679910196190</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1679910196190</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Class 3 풀이">
+      <created>1680160174305</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680160174305</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Class 3 풀이">
+      <created>1680282988972</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680282988972</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Class 3 풀이, Dynamic Programming">
+      <created>1680334693510</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1680334693510</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Class 3 풀이, DFS">
+      <created>1680431366183</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1680431366183</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Class 3 풀이, Dynamic Programming">
+      <created>1680520351648</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680520351648</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Class 3 풀이, Dynamic Programming">
+      <created>1680584366584</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1680584366584</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Class 2 풀이" />
-    <option name="LAST_COMMIT_MESSAGE" value="Class 2 풀이" />
+    <MESSAGE value="Class 3 풀이" />
+    <MESSAGE value="Class 3 풀이, DFS" />
+    <MESSAGE value="Class 3 풀이, Dynamic Programming" />
+    <option name="LAST_COMMIT_MESSAGE" value="Class 3 풀이, Dynamic Programming" />
   </component>
 </project>
