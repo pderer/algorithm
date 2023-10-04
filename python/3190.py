@@ -18,9 +18,8 @@ dy = [1, 0, -1, 0]
 
 head_direction = 0 # 머리 방향 처음은 우
 head_x, head_y = 0, 0 # 머리의 처음 좌표는 맨 위, 맨 좌측
-tail_x, tail_y = 0, 0 
+q = [(head_x, head_y)] # 뱀이 차지하고 있는 위치 정보(꼬리가 앞쪽)
 board[0][0] = 1 # 처음 좌표는 뱀 처리 (1)
-length = 1 # 처음 길이는 1
 time = 0
 
 def move(direction, x, y):
@@ -29,7 +28,7 @@ def move(direction, x, y):
     if nx < 0 or nx >= n or ny < 0 or ny >= n:
         return False # 벽에 부딪힘
     # TODO : 자기 몸 부딪힘
-    if board[nx][ny] != -1 and board[nx][ny] > 0: # 사과가 있는 곳이 아니고, 자기 몸일 경우  # noqa: E501
+    if board[nx][ny] != -1 and board[nx][ny] == 1: # 사과가 있는 곳이 아니고, 자기 몸일 경우  # noqa: E501
         return False
     return nx, ny
 
@@ -38,17 +37,6 @@ def eat(x, y):
         return True
     else: # 이동한 칸에 사과가 없음
         return False
-
-def find_tail(x, y):
-    # 꼬리는 항상 1, 2를 찾으면 됨
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        if nx < 0 or nx >= n or ny < 0 or ny >= n:
-            continue
-        if board[nx][ny] == 2:
-            return nx, ny
-    return False
 
 def turn_head(time):
     global head_direction
@@ -63,35 +51,21 @@ def turn_head(time):
                 if head_direction < 0:
                     head_direction = 3
     
-
 while True:
     # 매 초마다 이동
     time += 1
-    # 몸 길이를 늘림
-    length += 1
     # 머리를 다음 칸에 위치
     if move(head_direction, head_x, head_y) is False:
         print(time)
         break
     new_head_x, new_head_y = move(head_direction, head_x, head_y)
     if eat(new_head_x, new_head_y) is False: # 사과 못 먹음
-        if length > 2: # 길이가 2 이상
-            if find_tail(tail_x, tail_y) is not False:
-                new_tail_x, new_tail_y = find_tail(tail_x, tail_y)
-                board[tail_x][tail_y] = 0 # 꼬리를 비워줌
-                board[new_head_x][new_head_y] = 2 # 머리
-                board[new_tail_x][new_tail_y] = 1
-                tail_x, tail_y = new_tail_x, new_tail_y
-        else: # 길이가 1
-            board[new_head_x][new_head_y] = 1
-            board[tail_x][tail_y] = 0 # 꼬리를 비워줌
-            tail_x, tail_y = new_head_x, new_head_y
-        length -= 1
-        head_x, head_y = new_head_x, new_head_y
+        board[new_head_x][new_head_y] = 1
+        q.append((new_head_x, new_head_y))
+        old_tail_x, old_tail_y = q.pop(0)
+        board[old_tail_x][old_tail_y] = 0
     else: # 사과 먹음
-        if length > 2: # 몸 길이 3 이상 -> 몸통 존재
-            board[new_head_x][new_head_y] = 2 # 머리
-        else: # 머리와 꼬리만 존재
-            board[new_head_x][new_head_y] = 2 # 머리, 2 여야 find_tail 항상 작동
-        head_x, head_y = new_head_x, new_head_y
+        board[new_head_x][new_head_y] = 1 # 머리
+        q.append((new_head_x, new_head_y))
+    head_x, head_y = new_head_x, new_head_y
     turn_head(time)
