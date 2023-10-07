@@ -1,78 +1,34 @@
-from collections import deque
-from itertools import permutations
-
-
 n = int(input())
 num_list = list(map(int, input().split()))
-operators_list = list(map(int, input().split())) # 0:더하기, 1:빼기, 2:곱셈, 3:나누기
+add, sub, mul, div = map(int, input().split())
 
-operator_data = []
+max_value = -1e9
+min_value = 1e9
 
-for i in range(4):
-    for j in range(operators_list[i]):
-        operator_data.append(i)
-
-oper_perm = list(permutations(operator_data, n - 1))
-no_dup_perm = []
-
-for perm in oper_perm:
-    if perm in no_dup_perm:
-        continue
+# DFS를 사용하는 이유 : 그 전 값을 가지고 연산을 해야 함 -> 재귀
+def dfs(i, now): # i: index, now: 누적된 연산 값
+    global max_value, min_value, add, sub, mul, div
+    if i == n: # 계산을 다 했을 때, 최대 최소 업데이트
+        max_value = max(max_value, now)
+        min_value = min(min_value, now)
     else:
-        no_dup_perm.append(perm)
+        if add > 0:
+            add -= 1
+            dfs(i + 1, now + num_list[i])
+            add += 1
+        if sub > 0:
+            sub -= 1
+            dfs(i + 1, now - num_list[i])
+            sub += 1
+        if mul > 0:
+            mul -= 1
+            dfs(i + 1, now * num_list[i])
+            mul += 1
+        if div > 0:
+            div -= 1
+            dfs(i + 1, int(now / num_list[i]))
+            div += 1
 
-# print(no_dup_perm)
-maximum = 9999999999
-minimum = 9999999999
-
-for perm in no_dup_perm:
-    queue = deque()
-    queue.append((num_list[0], perm[0], num_list[1], 0)) # 좌항, 연산자, 우항, index
-    while queue:
-        left, op, right, index = queue.popleft()
-        if op == 0:
-            temp = left + right
-            if index == n - 2:
-                if maximum < temp:
-                    maximum = temp
-                if minimum > temp:
-                    minimum = temp
-                break
-            queue.append((temp, perm[index + 1], num_list[index + 2], index + 1))
-        elif op == 1:
-            temp = left - right
-            if index == n - 2:
-                if maximum < temp:
-                    maximum = temp
-                if minimum > temp:
-                    minimum = temp
-                break
-            queue.append((temp, perm[index + 1], num_list[index + 2], index + 1))
-        elif op == 2:
-            temp = left * right
-            if index == n - 2:
-                if maximum < temp:
-                    maximum = temp
-                if minimum > temp:
-                    minimum = temp
-                break
-            queue.append((temp, perm[index + 1], num_list[index + 2], index + 1))
-        elif op == 3:
-            temp = 0
-            if left < 0 and right > 0:
-                temp = (-left) // right
-                temp = -(temp)
-            else:
-                temp = left // right
-            if index == n - 2:
-                if maximum < temp:
-                    maximum = temp
-                if minimum > temp:
-                    minimum = temp
-                break
-            queue.append((temp, perm[index + 1], num_list[index + 2], index + 1))
-
-print(maximum)
-print(minimum)
-
-
+dfs(1, num_list[0])
+print(max_value)
+print(min_value)
