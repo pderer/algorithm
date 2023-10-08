@@ -6,11 +6,11 @@ data = [] # 포탑 공격력 지도
 
 INF = 999999999
 recent_attack = [] # 최근 공격한 포탑 (시점, x, y) 스택
+is_active = [[False] * m for _ in range(n)]
 for i in range(n):
     temp = list(map(int, input().split()))
     data.append(temp)
     recent_attack.append((0, temp[0], temp[1]))
-
 
 # 공격자 선정
 def select_attcker(t): # t: 시점
@@ -144,15 +144,17 @@ dy = [1, 0, -1, 0]
 
 def laser_attack(attacker_x, attacker_y, victim_x, victim_y):
     # 레이저 공격 먼저 시도
-    visited = [[-1] * m for _ in range(n)]
+    visited = [[False] * m for _ in range(n)]
+    back_x = [[0] * m for _ in range(n)] # 최단 경로에서 거쳐간 좌표 저장
+    back_y = [[0] * m for _ in range(n)]
     visited[attacker_x][attacker_y] == 0
     queue = deque()
     queue.append((attacker_x, attacker_y))
-    victim_distance = 0
+    can_attack = False
     while queue:
         x, y = queue.popleft()
         if x == victim_x and y == victim_y:
-            victim_distance = visited[x][y]
+            can_attack = True
             break
         for i in range(4):
             nx = x + dx[i]
@@ -167,37 +169,93 @@ def laser_attack(attacker_x, attacker_y, victim_x, victim_y):
                 ny = 0
             if data[nx][ny] == 0: # 부서진 포탑
                 continue
-            if visited[nx][ny] == -1:
-                visited[nx][ny] = visited[x][y] + 1
+            if visited[nx][ny] is False:
+                visited[nx][ny] = True
+                back_x[nx][ny] = x
+                back_y[nx][ny] = y
                 queue.append((nx, ny))
-    if victim_distance == 0:
+    if can_attack is False:
         return False
-    distance = 1
-    attack_list = []
-    queue2 = deque()
-    queue2.append((attacker_x, attacker_y))
+    # 레이저 공격 시작
+    attack = data[attacker_x][attacker_y]
+    data[victim_x][victim_y] -= attack
+    if data[victim_x][victim_y] < 0:
+        data[victim_x][victim_y] = 0
+    x, y = back_x[victim_x][victim_y], back_y[victim_x][victim_y]
+    is_active[x][y] = True
     while True:
-        x, y = queue2.popleft()
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if nx < 0:
-                nx = n - 1
-            if ny < 0:
-                ny = m - 1
-            if nx >= n:
-                nx = 0
-            if ny >= m:
-                ny = 0
-            if visited[nx][ny] == distance:
-                attack_list.append((nx, ny))
-                distance += 1
+        if x == attacker_x and y == attacker_y:
+            break
+        data[x][y] -= (attack // 2)
+        if data[x][y] < 0:
+            data[x][y] = 0
+        x, y = back_x[x][y], back_y[x][y]
+        is_active[x][y] = True
+    return True
 
+dx2 = [-1, -1, -1, 0, 1, 1, 1, 0] # 8방향
+dy2 = [-1, 0, 1, 1, 1, 0, -1, -1]
 
+def bomb_attack(attacker_x, attacker_y, victim_x, victim_y):
+    # 포탄 공격
+    attack = data[attacker_x][attacker_y]
+    data[victim_x][victim_y] -= attack
+    if data[victim_x][victim_y] < 0:
+        data[victim_x][victim_y] = 0
+    for i in range(8):
+        nx = victim_x + dx2[i]
+        ny = victim_y + dy2[i]
+        if nx < 0:
+            nx = n - 1
+        if ny < 0:
+            ny = m - 1
+        if nx >= n:
+            nx = 0
+        if ny >= m:
+            ny = 0
+        if data[nx][ny] == 0: # 부서진 포탑
+            continue
+        if nx == attacker_x and ny == attacker_y: # 공격자일 경우
+            continue
+        data[nx][ny] -= (attack // 2)
+        is_active[nx][ny] = True
+        if data[nx][ny] < 0:
+            data[nx][ny] = 0
 
+def fix():
+    for i in range(n):
+        for j in range(m):
+            if is_active[i][j] is False:
+                if data[i][j] != 0:
+                    data[i][j] += 1
 
-x, y = select_attcker(1)
-data[x][y] += (n + m)
-print(data[x][y])
-victim_x, victim_y = select_victim(1, x, y)
+def init():
+    for i in range(n):
+        for j in range(m):
+            is_active[i][j] = False
 
+for i in range(1, k + 1):
+    init()
+    live = 0
+    for j in range(n):
+        for k in range(m):
+            if data[j][k] > 0:
+                live += 1
+    if live <= 1:
+        break
+    attacker_x, attacker_y = select_attcker(i)
+    print(attacker_x, attacker_y)
+    data[attacker_x][attacker_y] += (n + m)
+    is_active[attacker_x][attacker_y] = True
+    victim_x, victim_y = select_victim(i, attacker_x, attacker_y)
+    is_active[victim_x][victim_y] = True
+    if laser_attack(attacker_x, attacker_y, victim_x, victim_y) is False: # 레이저 공격 실패  # noqa: E501
+        bomb_attack(attacker_x, attacker_y, victim_x, victim_y)
+    fix()
+    print(data)
+
+result = 0
+for i in range(n):
+    for j in range(m):
+        result = max(result, data[i][j])
+print(result)
