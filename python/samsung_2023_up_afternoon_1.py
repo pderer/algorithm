@@ -26,48 +26,6 @@ class Square:
         self.r = r
         self.c = c
 
-dx = [-1, 1, 0, 0] # 상하좌우
-dy = [0, 0, -1, 1]
-
-def move(player_x, player_y): # 참가자의 좌표 x, y
-    global escape_x, escape_y
-    visited = [[0] * n for _ in range(n)] # BFS 방문
-    back_x = [[0] * n for _ in range(n)] # 경로 저장
-    back_y = [[0] * n for _ in range(n)] 
-    min_distance = abs(escape_x - player_x) + abs(escape_y - player_y) # 출구와의 최단 거리  # noqa: E501
-    q = deque()
-    q.append((player_x, player_y))
-    can_move = False
-
-    while q:
-        x, y = q.popleft()
-        if escape_x == x and escape_y == y:
-            can_move = True
-            break
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if nx < 0 or ny < 0 or nx >= n or ny >= n:
-                continue
-            if visited[nx][ny] != 0: # 이미 방문
-                continue
-            if graph[nx][ny] > 0: # 벽
-                continue
-            visited[nx][ny] = visited[x][y] + 1
-            back_x[nx][ny], back_y[nx][ny] = x, y
-            q.append((nx, ny))
-    if can_move:
-        if visited[escape_x][escape_y] == min_distance:
-            x, y = back_x[escape_x][escape_y], back_y[escape_x][escape_y]
-            if x == player_x and y == player_y:
-                return (escape_x, escape_y)
-            while True:
-                x, y = back_x[x][y], back_y[x][y]
-                if back_x[x][y] == player_x and back_y[x][y] == player_y:
-                    break
-            return (x, y)
-    return (-1, -1)
-
 def move2(player_x, player_y):
     global escape_x, escape_y
     
