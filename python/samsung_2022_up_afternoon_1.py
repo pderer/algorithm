@@ -1,7 +1,5 @@
-from collections import deque
-
 n, m, k = map(int, input().split())
-graph = [[0] * (n + 1)]  # 모든 index 1 부터 시작 하자 헷갈 리지 않게, y축 하나 추가 한 것 리스트, 이미 x 축 하나 추가됨
+graph = [[0] * (n + 1)]  # 모든 index 1 부터 시작 하자 헷갈 리지 않게, y축 하나 추가 한 것 리스트, 이미 x 축 하나 추가됨  # noqa: E501
 for _ in range(n):
     graph.append([0] + list(map(int, input().split())))  # y축 하나 추가 한 것
 
@@ -45,7 +43,7 @@ def dfs(x, y, idx):
         if visited[nx][ny]:
             continue
 
-        # 가장 처음 탐색할 때 2가 있는 방향으로 dfs 진행 -> 자동으로 3까지 탐색, 그 이후 4도 v에 추가함
+        # 가장 처음 탐색할 때 2가 있는 방향으로 dfs 진행 -> 자동으로 3까지 탐색, 그 이후 4도 v에 추가함  # noqa: E501
         if len(v[idx]) == 1 and graph[nx][ny] != 2:
             continue
 
@@ -59,7 +57,7 @@ def move():
     for i in range(1, m + 1):
         # 각 팀에 대해 레일을 한 칸씩 뒤로 이동
         tmp = v[i][-1]  # 맨 뒤 칸
-        for j in range(len(v[i]) - 1, 0, -1):  # 맨 뒤에서 index 1까지 (index 0은 tmp로 저장함)
+        for j in range(len(v[i]) - 1, 0, -1):  # 맨 뒤에서 index 1까지 (index 0은 tmp로 저장함)  # noqa: E501
             v[i][j] = v[i][j - 1]
         v[i][0] = tmp  # 맨 앞에 맨 뒤였던 거 저장
 
@@ -137,7 +135,7 @@ def reverse(idx):
     for j in range(tail[idx] - 1, -1, -1):  # 1 2 3 -> 3 2 1
         new_v.append(v[idx][j])
 
-    for j in range(len(v[idx]) - 1, tail[idx] - 1, -1):  # 1 2 3 4 4 4 4 -> 3 2 1 4 4 4 4
+    for j in range(len(v[idx]) - 1, tail[idx] - 1, -1):  # 1 2 3 4 4 4 4 -> 3 2 1 4 4 4 4  # noqa: E501
         new_v.append(v[idx][j])
 
     v[idx] = new_v[:]
