@@ -1,204 +1,156 @@
 from collections import deque
 
 n, m, k = map(int, input().split())
-graph = []
-for i in range(n):
-    graph.append(list(map(int, input().split())))
+graph = [[0] * (n + 1)]  # 모든 index 1 부터 시작 하자 헷갈 리지 않게, y축 하나 추가 한 것 리스트, 이미 x 축 하나 추가됨
+for _ in range(n):
+    graph.append([0] + list(map(int, input().split())))  # y축 하나 추가 한 것
 
-
-class Team:
-    def __init__(self, persons, point):
-        self.persons = persons  # person list
-        self.point = point  # 점수
-
-
-class Person:
-    def __init__(self, position, role):
-        self.position = position  # 좌표
-        self.role = role  # 역할 (머리, 몸통, 꼬리)
-
-
-visited = [[False] * n for _ in range(n)]
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-team_list = []
+v = [[] for _ in range(m + 1)]
+# 각 팀별 tail 위치를 관리함 -> 팀원의 크기는 변하지 않으므로 꼬리 위치는 불변
+tail = [0] * (m + 1)
+visited = [[False] * (n + 1) for _ in range(n + 1)]
+graph_idx = [[0] * (n + 1) for _ in range(n + 1)]
+dxs = [-1, 1, 0, 0]
+dys = [0, 0, -1, 1]
+answer = 0
 
 
 def find_teams():
-    global team_list
+    cnt = 1
 
-    for x in range(n):
-        for y in range(n):
-            if graph[x][y] != 1:
-                continue
-            if visited[x][y]:
-                continue
+    for x in range(n + 1):
+        for y in range(n + 1):
+            if graph[x][y] == 1:
+                v[cnt].append((x, y))
+                cnt += 1
 
-            # BFS 로 팀 찾기
-            person = Person((x, y), graph[x][y])
-            persons = deque()
-            persons.append(person)
-            team = Team(persons, 0)
-            q = deque()
-            q.append((x, y))
-            visited[x][y] = True
-            three = 0
-            while q:
-                qx, qy = q.popleft()
-                for index in range(4):
-                    nx = qx + dx[index]
-                    ny = qy + dy[index]
-                    if nx < 0 or ny < 0 or nx >= n or ny >= n:
-                        continue
-                    if visited[nx][ny]:
-                        continue
-                    if graph[nx][ny] == 0 or graph[nx][ny] == 4:
-                        continue
-                    if graph[nx][ny] == 3:
-                        three = Person((nx, ny), graph[nx][ny])
-                        continue
-                    visited[nx][ny] = True
-                    new_person = Person((nx, ny), graph[nx][ny])
-                    team.persons.append(new_person)
-                    q.append((nx, ny))
+    for i in range(1, m + 1):
+        x, y = v[i][0]
+        dfs(x, y, i)
 
-            team.persons.append(three)
-            team_list.append(team)
+
+def is_out_range(x, y):
+    return not (1 <= x <= n and 1 <= y <= n)
+
+
+def dfs(x, y, idx):
+    visited[x][y] = True
+    graph_idx[x][y] = idx
+    for dx, dy in zip(dxs, dys):
+        nx, ny = x + dx, y + dy
+        if is_out_range(nx, ny):
+            continue
+        if graph[nx][ny] == 0:
+            continue
+        if visited[nx][ny]:
+            continue
+
+        # 가장 처음 탐색할 때 2가 있는 방향으로 dfs 진행 -> 자동으로 3까지 탐색, 그 이후 4도 v에 추가함
+        if len(v[idx]) == 1 and graph[nx][ny] != 2:
+            continue
+
+        v[idx].append((nx, ny))
+        if graph[nx][ny] == 3:
+            tail[idx] = len(v[idx])
+        dfs(nx, ny, idx)
 
 
 def move():
-    global team_list
+    for i in range(1, m + 1):
+        # 각 팀에 대해 레일을 한 칸씩 뒤로 이동
+        tmp = v[i][-1]  # 맨 뒤 칸
+        for j in range(len(v[i]) - 1, 0, -1):  # 맨 뒤에서 index 1까지 (index 0은 tmp로 저장함)
+            v[i][j] = v[i][j - 1]
+        v[i][0] = tmp  # 맨 앞에 맨 뒤였던 거 저장
 
-    for index in range(len(team_list)):
-        team = team_list[index]
-        persons = team.persons  # persons deque
-        head = persons.popleft()  # 머리 부터
-        hx, hy = head.position
-        tail_catch = False
-        for index2 in range(4):
-            nx = hx + dx[index2]
-            ny = hy + dy[index2]
-            if nx < 0 or ny < 0 or nx >= n or ny >= n:
-                continue
-            if graph[nx][ny] == 4:
-                graph[nx][ny] = 1
-                head.position = (nx, ny)
-                graph[hx][hy] = -1  # trace
-                persons.append(head)
-                break
-            elif graph[nx][ny] == 3:  # 꼬리 잡음
-                graph[nx][ny] = 1
-                head.position = (nx, ny)
-                graph[hx][hy] = 3
-                persons.append(head)
-                tail_catch = True
-                break
+    for i in range(1, m + 1):
+        for j, (x, y) in enumerate(v[i]):
+            if j == 0:  # 레일의 맨 앞 -> 머리
+                graph[x][y] = 1
+            elif j < tail[i] - 1:
+                graph[x][y] = 2
+            elif j == tail[i] - 1:
+                graph[x][y] = 3
+            else:
+                graph[x][y] = 4
 
-        while True:
-            person = persons.popleft()
-            px, py = person.position
-            if person.role == 3:  # 꼬리 일 경우
-                for index4 in range(4):
-                    n3x = px + dx[index4]
-                    n3y = py + dy[index4]
-                    if n3x < 0 or n3y < 0 or n3x >= n or n3y >= n:
-                        continue
-                    if graph[n3x][n3y] == -1:  # trace
-                        graph[n3x][n3y] = 3
-                        person.position = (n3x, n3y)
-                        if tail_catch:
-                            graph[px][py] = 1
-                        else:
-                            graph[px][py] = 4  # 이동 칸 처리
-                        persons.append(person)
-                        break
-                break
 
-            # 몸통
-            for index3 in range(4):
-                n2x = px + dx[index3]
-                n2y = py + dy[index3]
-                if n2x < 0 or n2y < 0 or n2x >= n or n2y >= n:
-                    continue
-                if graph[n2x][n2y] == -1:  # trace
-                    graph[n2x][n2y] = 2
-                    person.position = (n2x, n2y)
-                    graph[px][py] = -1  # trace
-                    persons.append(person)
-                    break
-
-        team_list[index] = team
+def get_point(x, y):
+    global answer
+    idx = graph_idx[x][y]
+    cnt = v[idx].index((x, y))
+    answer += (cnt + 1) * (cnt + 1)
 
 
 time = 0
 
 
 def throw_ball():
-    direction = ((time - 1) // n) % 4
-    index = (time - 1) % n  # 0 ~ 6
-    if direction == 0:
-        for y in range(n):
-            if graph[index][y] > 0 and graph[index][y] != 4:
-                return index, y
-    elif direction == 1:
-        for x in range(n - 1, -1, -1):
-            if graph[x][index] > 0 and graph[x][index] != 4:
-                return x, index
-    elif direction == 2:
-        for y in range(n - 1, -1, -1):
-            if graph[index][y] > 0 and graph[index][y] != 4:
-                return index, y
-    elif direction == 3:
-        for x in range(n):
-            if graph[x][index] > 0 and graph[x][index] != 4:
-                return x, index
-    # 만나지 않음
-    return None
+    t = (time - 1) % (4 * n) + 1
+
+    if t <= n:
+        # 1 ~ n 라운드의 경우 왼쪽에서 오른쪽 방향으로 공을 던집니다.
+        for i in range(1, n + 1):
+            if 1 <= graph[t][i] and graph[t][i] <= 3:
+                # 사람이 있는 첫 번째 지점을 찾습니다.
+                # 찾게 되면 점수를 체크한 뒤 찾은 사람의 팀 번호를 저장합니다.
+                get_point(t, i)
+                return graph_idx[t][i]
+    elif t <= 2 * n:
+        # n+1 ~ 2n 라운드의 경우 아래에서 윗쪽 방향으로 공을 던집니다.
+        t -= n
+        for i in range(1, n + 1):
+            if 1 <= graph[n + 1 - i][t] and graph[n + 1 - i][t] <= 3:
+                # 사람이 있는 첫 번째 지점을 찾습니다.
+                # 찾게 되면 점수를 체크한 뒤 찾은 사람의 팀 번호를 저장합니다.
+                get_point(n + 1 - i, t)
+                return graph_idx[n + 1 - i][t]
+    elif t <= 3 * n:
+        # 2n+1 ~ 3n 라운드의 경우 오른쪽에서 왼쪽 방향으로 공을 던집니다.
+        t -= (2 * n)
+        for i in range(1, n + 1):
+            if 1 <= graph[n + 1 - t][n + 1 - i] and graph[n + 1 - t][n + 1 - i] <= 3:
+                # 사람이 있는 첫 번째 지점을 찾습니다.
+                # 찾게 되면 점수를 체크한 뒤 찾은 사람의 팀 번호를 저장합니다.
+                get_point(n + 1 - t, n + 1 - i)
+                return graph_idx[n + 1 - t][n + 1 - i]
+    else:
+        # 3n+1 ~ 4n 라운드의 경우 위에서 아랫쪽 방향으로 공을 던집니다.
+        t -= (3 * n)
+        for i in range(1, n + 1):
+            if 1 <= graph[i][n + 1 - t] and graph[i][n + 1 - t] <= 3:
+                # 사람이 있는 첫 번째 지점을 찾습니다.
+                # 찾게 되면 점수를 체크한 뒤 찾은 사람의 팀 번호를 저장합니다.
+                get_point(i, n + 1 - t)
+                return graph_idx[i][n + 1 - t]
+
+    # 공이 그대로 지나간다면 0을 반환합니다.
+    return 0
 
 
-def get_ball(hx, hy):
-    global team_list
+def reverse(idx):
+    if idx == 0:
+        return
 
-    for index in range(len(team_list)):
-        team = team_list[index]
-        persons = team.persons  # persons deque
-        count = 0
-        have_mate = False
-        while True:
-            count += 1
-            person = persons.popleft()
-            px, py = person.position
-            if px == hx and py == hy:
-                team.point += (count * count)
-                persons.append(person)
-                have_mate = True
-                while True:
-                    temp_person = persons.popleft()
-                    if temp_person.role == 1:
-                        persons.appendleft(temp_person)
-                        break
-                    else:
-                        persons.append(temp_person)
-                break
-            if person.role == 3:
-                if px != hx or py != hy:
-                    persons.append(person)
-                    break
-            persons.append(person)
+    new_v = []
 
-        if have_mate:
-            persons.reverse()
-            temp_tail = persons.popleft()
-            temp_tail.role = 1
-            tx, ty = temp_tail.position
-            graph[tx][ty] = 1
-            persons.appendleft(temp_tail)
-            temp_head = persons.pop()
-            temp_head.role = 3
-            htx, hty = temp_head.position
-            graph[htx][hty] = 3
-            persons.append(temp_head)
-            break
+    for j in range(tail[idx] - 1, -1, -1):  # 1 2 3 -> 3 2 1
+        new_v.append(v[idx][j])
+
+    for j in range(len(v[idx]) - 1, tail[idx] - 1, -1):  # 1 2 3 4 4 4 4 -> 3 2 1 4 4 4 4
+        new_v.append(v[idx][j])
+
+    v[idx] = new_v[:]
+
+    for j, (x, y) in enumerate(v[idx]):
+        if j == 0:
+            graph[x][y] = 1
+        elif j < tail[idx] - 1:
+            graph[x][y] = 2
+        elif j == tail[idx] - 1:
+            graph[x][y] = 3
+        else:
+            graph[x][y] = 4
 
 
 find_teams()
@@ -207,13 +159,7 @@ find_teams()
 for _ in range(k):
     time += 1
     move()
-    if throw_ball() is not None:
-        hit_x, hit_y = throw_ball()
-        get_ball(hit_x, hit_y)
+    got_ball_idx = throw_ball()
+    reverse(got_ball_idx)
 
-answer = 0
-
-for i in range(len(team_list)):
-    temp = team_list[i]
-    answer += temp.point
 print(answer)
